@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Resume Builder 5000 Pro</title>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==========================================================================
+           BASE STYLES AND RESETS
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+        }
+
+        /* ==========================================================================
+           TYPOGRAPHY
+           ========================================================================== */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            border-radius: 2px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: #3498db;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* ==========================================================================
+           LAYOUT AND CONTAINERS
+           ========================================================================== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .app-title {
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .app-subtitle {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .two-column-layout {
+            display: flex;
+            gap: 30px;
+        }
+
+        .form-column {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .preview-column {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* ==========================================================================
+           FORM STYLES
+           ========================================================================== */
+        .resume-form {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .form-section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* ==========================================================================
+           BUTTON STYLES
+           ========================================================================== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background-color: #2ecc71;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+            transform: translateY(-2px);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        /* ==========================================================================
+           DYNAMIC FIELD STYLES
+           ========================================================================== */
+        .dynamic-field {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .add-btn {
+            margin-top: 10px;
+        }
+
+        /* ==========================================================================
+           RESUME PREVIEW STYLES
+           ========================================================================== */
+        .resume-preview {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 20px;
+        }
+
+        .resume-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .resume-name {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .resume-title {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #3498db;
+        }
+
+        .resume-section {
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #3498db;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #3498db;
+        }
+
+        /* Experience items */
+        .experience-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .experience-date {
+            font-weight: 500;
+            color: #7f8c8d;
+        }
+
+        .experience-details h4 {
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        .company {
+            font-weight: 500;
+            color: #3498db;
+            margin-bottom: 8px;
+        }
+
+        /* Education items */
+        .education-item {
+            margin-bottom: 20px;
+        }
+
+        .education-item h4 {
+            margin-bottom: 5px;
+        }
+
+        .institution {
+            font-weight: 500;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .skill-bar {
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            border-radius: 4px;
+        }
+
+        /* ==========================================================================
+           UTILITY CLASSES
+           ========================================================================== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-0 {
+            margin-bottom: 0;
+        }
+
+        .mt-0 {
+            margin-top: 0;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* ==========================================================================
+           FORMATTING TOOLBAR STYLES
+           ========================================================================== */
+        .formatting-toolbar {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .format-btn {
+            background: #ecf0f1;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .format-btn:hover {
+            background: #bdc3c7;
+        }
+
+        .format-btn.active {
+            background: #3498db;
+            color: white;
+        }
+
+        /* ==========================================================================
+           CHARACTER COUNTER
+           ========================================================================== */
+        .char-counter {
+            text-align: right;
+            font-size: 0.8rem;
+            color: #95a5a6;
+            margin-top: 5px;
+        }
+
+        .char-counter.warning {
+            color: #f39c12;
+        }
+
+        .char-counter.error {
+            color: #e74c3c;
+        }
+
+        /* ==========================================================================
+           TEMPLATE SELECTOR
+           ========================================================================== */
+        .template-selector {
+            margin-bottom: 20px;
+        }
+
+        .template-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .template-option {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .template-option:hover {
+            border-color: #3498db;
+        }
+
+        .template-option.active {
+            border-color: #3498db;
+            background: #f0f8ff;
+        }
+
+        .template-option i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #3498db;
+        }
+
+        /* ==========================================================================
+           PRINT STYLES
+           ========================================================================== */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            
+            .resume-preview, .resume-preview * {
+                visibility: visible;
+            }
+            
+            .resume-preview {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none;
+                padding: 0;
+            }
+            
+            .no-print {
+                display: none !important;
+            }
+            
+            @page {
+                size: A4;
+                margin: 1cm;
+            }
+        }
+
+        /* ==========================================================================
+           RESPONSIVE STYLES
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .two-column-layout {
+                flex-direction: column;
+            }
+            
+            .resume-preview {
+                position: static;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .experience-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-date {
+                margin-bottom: 5px;
+            }
+            
+            .app-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* ==========================================================================
+           ANIMATIONS
+           ========================================================================== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        /* ==========================================================================
+           TOAST NOTIFICATION
+           ========================================================================== */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #2ecc71;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            background: #e74c3c;
+        }
+
+        /* ==========================================================================
+           PROGRESS BAR
+           ========================================================================== */
+        .progress-container {
+            width: 100%;
+            height: 5px;
+            background: #ecf0f1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Changes saved successfully!</span>
+    </div>
+
+    <div class="container">
+        <header class="app-header">
+            <h1 class="app-title">Ultimate Resume Builder 5000 Pro</h1>
+            <p class="app-subtitle">Create professional resumes in minutes</p>
+        </header>
+
+        <div class="two-column-layout">
+            <!-- Form Column -->
+            <div class="form-column">
+                <!-- Resume Template Selection -->
+                <div class="resume-form template-selector">
+                    <h2><i class="fas fa-palette"></i> Choose a Template</h2>
+                    <div class="template-options">
+                        <div class="template-option active" data-template="professional">
+                            <i class="fas fa-briefcase"></i>
+                            <div>Professional</div>
+                        </div>
+                        <div class="template-option" data-template="modern">
+                            <i class="fas fa-rocket"></i>
+                            <div>Modern</div>
+                        </div>
+                        <div class="template-option" data-template="creative">
+                            <i class="fas fa-paint-brush"></i>
+                            <div>Creative</div>
+                        </div>
+                        <div class="template-option" data-template="minimal">
+                            <i class="fas fa-minus"></i>
+                            <div>Minimal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Information Section -->
+                <form class="resume-form" id="resumeForm">
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <h2><i class="fas fa-user"></i> Personal Information</h2>
+                            <span class="auto-save-status" id="personalInfoSaveStatus"></span>
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="jobTitle">Professional Title</label>
+                                <input type="text" id="jobTitle" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Address</label>
+                                <input type="text" id="address" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="website">Website/Portfolio</label>
+                                <input type="url" id="website" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="linkedin">LinkedIn</label>
+                                <input type="url" id="linkedin" class="form-control" placeholder="https://linkedin.com/in/yourprofile">
+                            </div>
+                            <div class="form-group">
+                                <label for="github">GitHub</label>
+                                <input type="url" id="github" class="form-control" placeholder="https://github.com/yourusername">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Summary Section -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <h2><i class="fas fa-file-alt"></i> Professional Summary</h2>
+                            <span class="auto-save-status" id="summarySaveStatus"></span>
+                        </div>
+                        <div class="formatting-toolbar">
+                            <button type="button" class="format-btn" data-command="bold" title="Bold"><i class="fas fa-bold"></i></button>
+                            <button type="button" class="format-btn" data-command="italic" title="Italic"><i class="fas fa-italic"></i></button>
+                            <button type="button" class="format-btn" data-command="underline" title="Underline"><i class="fas fa-underline"></i></button>
+                            <button type="button" class="format-btn" data-command="insertUnorderedList" title="Bullet List"><i class="fas fa-list-ul"></i></button>
+                            <button type="button" class="format-btn" data-command="insertOrderedList" title="Numbered List"><i class="fas fa-list-ol"></i></button>
+                            <button type="button" class="format-btn" data-command="createLink" title="Insert Link"><i class="fas fa-link"></i></button>
+                            <button type="button" class="format-btn" data-command="undo" title="Undo"><i class="fas fa-undo"></i></button>
+                            <button type="button" class="format-btn" data-command="redo" title="Redo"><i class="fas fa-redo"></i></button>
+                        </div>
+                        <div class="form-group">
+                            <div id="summary" class="form-control" contenteditable="true"></div>
+                            <div class="char-counter"><span id="summaryCharCount">0</span>/500 characters</div>
+                        </div>
+                    </div>
+
+                    <!-- Work Experience Section -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <h2><i class="fas fa-briefcase"></i> Work Experience</h2>
+                            <span class="auto-save-status" id="experienceSaveStatus"></span>
+                        </div>
+                        <div id="experienceForm">
+                            <!-- Experience items will be added here dynamically -->
+                        </div>
+                        <button type="button" class="btn btn-primary add-btn" onclick="addExperienceField()">
+                            <i class="fas fa-plus"></i> Add Experience
+                        </button>
+                    </div>
+
+                    <!-- Education Section -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                            <span class="auto-save-status" id="educationSaveStatus"></span>
+                        </div>
+                        <div id="educationForm">
+                            <!-- Education items will be added here dynamically -->
+                        </div>
+                        <button type="button" class="btn btn-primary add-btn" onclick="addEducationField()">
+                            <i class="fas fa-plus"></i> Add Education
+                        </button>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <h2><i class="fas fa-tools"></i> Skills</h2>
+                            <span class="auto-save-status" id="skillsSaveStatus"></span>
+                        </div>
+                        <div id="skillsForm">
+                            <!-- Skill items will be added here dynamically -->
+                        </div>
+                        <button type="button" class="btn btn-primary add-btn" onclick="addSkillField()">
+                            <i class="fas fa-plus"></i> Add Skill
+                        </button>
+                    </div>
+
+                    <!-- Projects Section -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <h2><i class="fas fa-project-diagram"></i> Projects</h2>
+                            <span class="auto-save-status" id="projectsSaveStatus"></span>
+                        </div>
+                        <div id="projectsForm">
+                            <!-- Project items will be added here dynamically -->
+                        </div>
+                        <button type="button" class="btn btn-primary add-btn" onclick="addProjectField()">
+                            <i class="fas fa-plus"></i> Add Project
+                        </button>
+                    </div>
+
+                    <!-- Certifications Section -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+                            <span class="auto-save-status" id="certificationsSaveStatus"></span>
+                        </div>
+                        <div id="certificationsForm">
+                            <!-- Certification items will be added here dynamically -->
+                        </div>
+                        <button type="button" class="btn btn-primary add-btn" onclick="addCertificationField()">
+                            <i class="fas fa-plus"></i> Add Certification
+                        </button>
+                    </div>
+
+                    <!-- Languages Section -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <h2><i class="fas fa-language"></i> Languages</h2>
+                            <span class="auto-save-status" id="languagesSaveStatus"></span>
+                        </div>
+                        <div id="languagesForm">
+                            <!-- Language items will be added here dynamically -->
+                        </div>
+                        <button type="button" class="btn btn-primary add-btn" onclick="addLanguageField()">
+                            <i class="fas fa-plus"></i> Add Language
+                        </button>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions btn-group">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-sync-alt"></i> Update Resume
+                        </button>
+                        <button type="button" class="btn btn-success" onclick="saveResume()">
+                            <i class="fas fa-save"></i> Save Resume
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="loadResume()">
+                            <i class="fas fa-folder-open"></i> Load Resume
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="window.print()">
+                            <i class="fas fa-print"></i> Print Resume
+                        </button>
+                        <button type="button" class="btn btn-danger" onclick="resetResume()">
+                            <i class="fas fa-trash"></i> Reset
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Preview Column -->
+            <div class="preview-column">
+                <div class="resume-preview" id="resumePreview">
+                    <div class="resume-header">
+                        <h1 class="resume-name">Your Name Here</h1>
+                        <div class="resume-title">Professional Title</div>
+                        <div class="contact-info">
+                            <div class="contact-item"><i class="fas fa-envelope"></i> email@example.com</div>
+                            <div class="contact-item"><i class="fas fa-phone"></i> (123) 456-7890</div>
+                            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> City, Country</div>
+                            <div class="contact-item"><i class="fas fa-globe"></i> yourwebsite.com</div>
+                        </div>
+                    </div>
+
+                    <div class="resume-section">
+                        <h3 class="section-title">Professional Summary</h3>
+                        <p>Experienced professional with a demonstrated history of working in the industry. Skilled in various technologies and methodologies. Strong engineering professional with a degree focused in specific field from University Name.</p>
+                    </div>
+
+                    <div class="resume-section">
+                        <h3 class="section-title">Work Experience</h3>
+                        <div class="experience-item">
+                            <div class="experience-date">Jan 2020 - Present</div>
+                            <div class="experience-details">
+                                <h4>Senior Position</h4>
+                                <div class="company">Company Name</div>
+                                <p>Description of responsibilities and achievements in this role. Highlight key contributions and results.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resume-section">
+                        <h3 class="section-title">Education</h3>
+                        <div class="education-item">
+                            <h4>Degree in Field of Study</h4>
+                            <div class="institution">University Name</div>
+                            <div class="graduation-year">Graduated: May 2019</div>
+                        </div>
+                    </div>
+
+                    <div class="resume-section">
+                        <h3 class="section-title">Skills</h3>
+                        <div class="skills-container">
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>Skill Name</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Options -->
+                <div class="resume-form no-print">
+                    <h2><i class="fas fa-download"></i> Export Options</h2>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary" onclick="exportResume('pdf')">
+                            <i class="fas fa-file-pdf"></i> PDF
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="exportResume('docx')">
+                            <i class="fas fa-file-word"></i> Word
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="exportResume('txt')">
+                            <i class="fas fa-file-alt"></i> Text
+                        </button>
+                        <button type="button" class="btn btn-primary" onclick="exportResume('html')">
+                            <i class="fas fa-file-code"></i> HTML
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         JAVASCRIPT
+         ========================================================================== -->
+    <script>
+        /**
+         * =============================================
+         * GLOBAL VARIABLES AND INITIALIZATION
+         * =============================================
+         */
+        let resumeData = {
+            template: 'professional',
+            personalInfo: {
+                fullName: '',
+                jobTitle: '',
+                email: '',
+                phone: '',
+                address: '',
+                website: '',
+                linkedin: '',
+                github: ''
+            },
+            summary: '',
+            experience: [],
+            education: [],
+            skills: [],
+            projects: [],
+            certifications: [],
+            languages: []
+        };
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initForm();
+            loadFromLocalStorage();
+            setupAutoSave();
+            setupCharacterCounters();
+            setupFormattingToolbar();
+            setupTemplateSelector();
+            updateProgressBar();
+        });
+
+        /**
+         * =============================================
+         * FORM INITIALIZATION AND EVENT HANDLERS
+         * =============================================
+         */
+        function initForm() {
+            // Add initial fields
+            addExperienceField();
+            addEducationField();
+            addSkillField();
+            addProjectField();
+            addCertificationField();
+            addLanguageField();
+            
+            // Form submission handler
+            document.getElementById('resumeForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                updateResumeData();
+                generateResumePreview();
+                showToast('Resume updated successfully!');
+            });
+        }
+
+        /**
+         * =============================================
+         * AUTO-SAVE FUNCTIONALITY
+         * =============================================
+         */
+        function setupAutoSave() {
+            // Auto-save for personal info
+            const personalInfoFields = ['fullName', 'jobTitle', 'email', 'phone', 'address', 'website', 'linkedin', 'github'];
+            personalInfoFields.forEach(field => {
+                document.getElementById(field).addEventListener('input', function() {
+                    resumeData.personalInfo[field] = this.value;
+                    saveToLocalStorage();
+                    updateSaveStatus('personalInfoSaveStatus', true);
+                });
+            });
+
+            // Auto-save for summary
+            document.getElementById('summary').addEventListener('input', function() {
+                resumeData.summary = this.innerHTML;
+                saveToLocalStorage();
+                updateSaveStatus('summarySaveStatus', true);
+                updateCharacterCounter('summary', 'summaryCharCount', 500);
+            });
+
+            // Set up auto-save status indicators
+            const sections = ['experience', 'education', 'skills', 'projects', 'certifications', 'languages'];
+            sections.forEach(section => {
+                updateSaveStatus(`${section}SaveStatus`, false);
+            });
+        }
+
+        function updateSaveStatus(elementId, saved) {
+            const element = document.getElementById(elementId);
+            if (saved) {
+                element.innerHTML = '<i class="fas fa-check-circle" style="color: #2ecc71;"></i> Saved';
+                setTimeout(() => {
+                    element.innerHTML = '';
+                }, 2000);
+            } else {
+                element.innerHTML = '<i class="fas fa-exclamation-circle" style="color: #f39c12;"></i> Not saved';
+            }
+        }
+
+        /**
+         * =============================================
+         * CHARACTER COUNTERS
+         * =============================================
+         */
+        function setupCharacterCounters() {
+            // Summary character counter
+            const summaryElement = document.getElementById('summary');
+            const summaryCounter = document.getElementById('summaryCharCount');
+            
+            summaryElement.addEventListener('input', function() {
+                updateCharacterCounter('summary', 'summaryCharCount', 500);
+            });
+            
+            // Initial update
+            updateCharacterCounter('summary', 'summaryCharCount', 500);
+        }
+
+        function updateCharacterCounter(elementId, counterId, maxLength) {
+            const element = document.getElementById(elementId);
+            const counter = document.getElementById(counterId);
+            
+            // For contenteditable div, we need to count text content
+            const text = element.textContent || element.innerText;
+            const count = text.length;
+            
+            counter.textContent = count;
+            
+            // Update counter color based on length
+            if (count > maxLength) {
+                counter.parentElement.classList.add('error');
+                counter.parentElement.classList.remove('warning');
+            } else if (count > maxLength * 0.8) {
+                counter.parentElement.classList.add('warning');
+                counter.parentElement.classList.remove('error');
+            } else {
+                counter.parentElement.classList.remove('warning', 'error');
+            }
+        }
+
+        /**
+         * =============================================
+         * TEXT FORMATTING TOOLBAR
+         * =============================================
+         */
+        function setupFormattingToolbar() {
+            const buttons = document.querySelectorAll('.format-btn');
+            
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const command = this.getAttribute('data-command');
+                    
+                    if (command === 'createLink') {
+                        const url = prompt('Enter the URL:');
+                        if (url) {
+                            document.execCommand(command, false, url);
+                        }
+                    } else {
+                        document.execCommand(command, false, null);
+                    }
+                    
+                    // Toggle active state for format buttons
+                    if (command === 'bold' || command === 'italic' || command === 'underline') {
+                        this.classList.toggle('active');
+                    }
+                    
+                    // Focus back on the contenteditable div
+                    document.getElementById('summary').focus();
+                });
+            });
+            
+            // Handle undo/redo
+            document.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key === 'z') {
+                    if (e.shiftKey) {
+                        document.execCommand('redo', false, null);
+                    } else {
+                        document.execCommand('undo', false, null);
+                    }
+                    e.preventDefault();
+                }
+            });
+        }
+
+        /**
+         * =============================================
+         * TEMPLATE SELECTOR
+         * =============================================
+         */
+        function setupTemplateSelector() {
+            const templateOptions = document.querySelectorAll('.template-option');
+            
+            templateOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove active class from all options
+                    templateOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // Add active class to clicked option
+                    this.classList.add('active');
+                    
+                    // Update template in resume data
+                    resumeData.template = this.getAttribute('data-template');
+                    saveToLocalStorage();
+                    
+                    // Regenerate preview with new template
+                    generateResumePreview();
+                    
+                    showToast(`Template changed to ${this.textContent.trim()}`);
+                });
+            });
+        }
+
+        /**
+         * =============================================
+         * DYNAMIC FIELD GENERATORS
+         * =============================================
+         */
+        // Experience fields
+        function addExperienceField(experience = {}) {
+            const container = document.getElementById('experienceForm');
+            const id = Date.now(); // Unique ID for each field
+            
+            const newExperience = document.createElement('div');
+            newExperience.className = 'dynamic-field';
+            newExperience.dataset.id = id;
+            newExperience.innerHTML = `
+                <button type="button" class="remove-btn" onclick="removeField(this, 'experience')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text" class="form-control company" value="${experience.company || ''}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Position Title</label>
+                        <input type="text" class="form-control position" value="${experience.position || ''}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="month" class="form-control start-date" value="${experience.startDate || ''}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="month" class="form-control end-date" value="${experience.endDate || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control description" rows="3">${experience.description || ''}</textarea>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(newExperience);
+            
+            // Add event listeners for auto-save
+            const fields = newExperience.querySelectorAll('.company, .position, .start-date, .end-date, .description');
+            fields.forEach(field => {
+                field.addEventListener('input', function() {
+                    updateResumeData();
+                    saveToLocalStorage();
+                    updateSaveStatus('experienceSaveStatus', true);
+                });
+            });
+            
+            return id;
+        }
+
+        // Education fields
+        function addEducationField(education = {}) {
+            const container = document.getElementById('educationForm');
+            const id = Date.now();
+            
+            const newEducation = document.createElement('div');
+            newEducation.className = 'dynamic-field';
+            newEducation.dataset.id = id;
+            newEducation.innerHTML = `
+                <button type="button" class="remove-btn" onclick="removeField(this, 'education')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Institution</label>
+                        <input type="text" class="form-control institution" value="${education.institution || ''}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Degree</label>
+                        <input type="text" class="form-control degree" value="${education.degree || ''}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Field of Study</label>
+                        <input type="text" class="form-control field" value="${education.field || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Graduation Year</label>
+                        <input type="month" class="form-control grad-year" value="${education.gradYear || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control edu-description" rows="2">${education.description || ''}</textarea>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(newEducation);
+            
+            // Add event listeners for auto-save
+            const fields = newEducation.querySelectorAll('.institution, .degree, .field, .grad-year, .edu-description');
+            fields.forEach(field => {
+                field.addEventListener('input', function() {
+                    updateResumeData();
+                    saveToLocalStorage();
+                    updateSaveStatus('educationSaveStatus', true);
+                });
+            });
+            
+            return id;
+        }
+
+        // Skill fields
+        function addSkillField(skill = {}) {
+            const container = document.getElementById('skillsForm');
+            const id = Date.now();
+            
+            const newSkill = document.createElement('div');
+            newSkill.className = 'dynamic-field';
+            newSkill.dataset.id = id;
+            newSkill.innerHTML = `
+                <button type="button" class="remove-btn" onclick="removeField(this, 'skills')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Skill Name</label>
+                        <input type="text" class="form-control skill-name" value="${skill.name || ''}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Skill Level (1-100)</label>
+                        <input type="range" class="form-control skill-level" min="1" max="100" value="${skill.level || 50}">
+                        <div class="skill-level-value">${skill.level || 50}%</div>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(newSkill);
+            
+            // Update skill level display when slider changes
+            const levelInput = newSkill.querySelector('.skill-level');
+            const levelValue = newSkill.querySelector('.skill-level-value');
+            
+            levelInput.addEventListener('input', function() {
+                levelValue.textContent = `${this.value}%`;
+                updateResumeData();
+                saveToLocalStorage();
+                updateSaveStatus('skillsSaveStatus', true);
+            });
+            
+            // Add event listeners for auto-save
+            const nameInput = newSkill.querySelector('.skill-name');
+            nameInput.addEventListener('input', function() {
+                updateResumeData();
+                saveToLocalStorage();
+                updateSaveStatus('skillsSaveStatus', true);
+            });
+            
+            return id;
+        }
+
+        // Project fields
+        function addProjectField(project = {}) {
+            const container = document.getElementById('projectsForm');
+            const id = Date.now();
+            
+            const newProject = document.createElement('div');
+            newProject.className = 'dynamic-field';
+            newProject.dataset.id = id;
+            newProject.innerHTML = `
+                <button type="button" class="remove-btn" onclick="removeField(this, 'projects')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="text" class="form-control project-name" value="${project.name || ''}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Project URL</label>
+                        <input type="url" class="form-control project-url" value="${project.url || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Technologies Used</label>
+                        <input type="text" class="form-control project-tech" value="${project.technologies || ''}" placeholder="Comma separated list">
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control project-description" rows="3">${project.description || ''}</textarea>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(newProject);
+            
+            // Add event listeners for auto-save
+            const fields = newProject.querySelectorAll('.project-name, .project-url, .project-tech, .project-description');
+            fields.forEach(field => {
+                field.addEventListener('input', function() {
+                    updateResumeData();
+                    saveToLocalStorage();
+                    updateSaveStatus('projectsSaveStatus', true);
+                });
+            });
+            
+            return id;
+        }
+
+        // Certification fields
+        function addCertificationField(certification = {}) {
+            const container = document.getElementById('certificationsForm');
+            const id = Date.now();
+            
+            const newCertification = document.createElement('div');
+            newCertification.className = 'dynamic-field';
+            newCertification.dataset.id = id;
+            newCertification.innerHTML = `
+                <button type="button" class="remove-btn" onclick="removeField(this, 'certifications')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Certification Name</label>
+                        <input type="text" class="form-control cert-name" value="${certification.name || ''}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Issuing Organization</label>
+                        <input type="text" class="form-control cert-org" value="${certification.organization || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Date Earned</label>
+                        <input type="month" class="form-control cert-date" value="${certification.date || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label>Credential ID (if applicable)</label>
+                        <input type="text" class="form-control cert-id" value="${certification.id || ''}">
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(newCertification);
+            
+            // Add event listeners for auto-save
+            const fields = newCertification.querySelectorAll('.cert-name, .cert-org, .cert-date, .cert-id');
+            fields.forEach(field => {
+                field.addEventListener('input', function() {
+                    updateResumeData();
+                    saveToLocalStorage();
+                    updateSaveStatus('certificationsSaveStatus', true);
+                });
+            });
+            
+            return id;
+        }
+
+        // Language fields
+        function addLanguageField(language = {}) {
+            const container = document.getElementById('languagesForm');
+            const id = Date.now();
+            
+            const newLanguage = document.createElement('div');
+            newLanguage.className = 'dynamic-field';
+            newLanguage.dataset.id = id;
+            newLanguage.innerHTML = `
+                <button type="button" class="remove-btn" onclick="removeField(this, 'languages')">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Language</label>
+                        <input type="text" class="form-control language-name" value="${language.name || ''}" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Proficiency</label>
+                        <select class="form-control language-proficiency" value="${language.proficiency || ''}">
+                            <option value="Native" ${language.proficiency === 'Native' ? 'selected' : ''}>Native</option>
+                            <option value="Fluent" ${language.proficiency === 'Fluent' ? 'selected' : ''}>Fluent</option>
+                            <option value="Advanced" ${language.proficiency === 'Advanced' ? 'selected' : ''}>Advanced</option>
+                            <option value="Intermediate" ${language.proficiency === 'Intermediate' ? 'selected' : ''}>Intermediate</option>
+                            <option value="Basic" ${language.proficiency === 'Basic' ? 'selected' : ''}>Basic</option>
+                        </select>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(newLanguage);
+            
+            // Add event listeners for auto-save
+            const fields = newLanguage.querySelectorAll('.language-name, .language-proficiency');
+            fields.forEach(field => {
+                field.addEventListener('input', function() {
+                    updateResumeData();
+                    saveToLocalStorage();
+                    updateSaveStatus('languagesSaveStatus', true);
+                });
+            });
+            
+            return id;
+        }
+
+        // Remove field function
+        function removeField(button, section) {
+            const field = button.closest('.dynamic-field');
+            field.remove();
+            
+            updateResumeData();
+            saveToLocalStorage();
+            updateSaveStatus(`${section}SaveStatus`, true);
+        }
+
+        /**
+         * =============================================
+         * RESUME DATA MANAGEMENT
+         * =============================================
+         */
+        function updateResumeData() {
+            // Update personal info
+            resumeData.personalInfo = {
+                fullName: document.getElementById('fullName').value,
+                jobTitle: document.getElementById('jobTitle').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                website: document.getElementById('website').value,
+                linkedin: document.getElementById('linkedin').value,
+                github: document.getElementById('github').value
+            };
+            
+            // Update summary
+            resumeData.summary = document.getElementById('summary').innerHTML;
+            
+            // Update experience
+            resumeData.experience = [];
+            document.querySelectorAll('#experienceForm .dynamic-field').forEach(field => {
+                resumeData.experience.push({
+                    company: field.querySelector('.company').value,
+                    position: field.querySelector('.position').value,
+                    startDate: field.querySelector('.start-date').value,
+                    endDate: field.querySelector('.end-date').value,
+                    description: field.querySelector('.description').value
+                });
+            });
+            
+            // Update education
+            resumeData.education = [];
+            document.querySelectorAll('#educationForm .dynamic-field').forEach(field => {
+                resumeData.education.push({
+                    institution: field.querySelector('.institution').value,
+                    degree: field.querySelector('.degree').value,
+                    field: field.querySelector('.field').value,
+                    gradYear: field.querySelector('.grad-year').value,
+                    description: field.querySelector('.edu-description').value
+                });
+            });
+            
+            // Update skills
+            resumeData.skills = [];
+            document.querySelectorAll('#skillsForm .dynamic-field').forEach(field => {
+                resumeData.skills.push({
+                    name: field.querySelector('.skill-name').value,
+                    level: field.querySelector('.skill-level').value
+                });
+            });
+            
+            // Update projects
+            resumeData.projects = [];
+            document.querySelectorAll('#projectsForm .dynamic-field').forEach(field => {
+                resumeData.projects.push({
+                    name: field.querySelector('.project-name').value,
+                    url: field.querySelector('.project-url').value,
+                    technologies: field.querySelector('.project-tech').value,
+                    description: field.querySelector('.project-description').value
+                });
+            });
+            
+            // Update certifications
+            resumeData.certifications = [];
+            document.querySelectorAll('#certificationsForm .dynamic-field').forEach(field => {
+                resumeData.certifications.push({
+                    name: field.querySelector('.cert-name').value,
+                    organization: field.querySelector('.cert-org').value,
+                    date: field.querySelector('.cert-date').value,
+                    id: field.querySelector('.cert-id').value
+                });
+            });
+            
+            // Update languages
+            resumeData.languages = [];
+            document.querySelectorAll('#languagesForm .dynamic-field').forEach(field => {
+                resumeData.languages.push({
+                    name: field.querySelector('.language-name').value,
+                    proficiency: field.querySelector('.language-proficiency').value
+                });
+            });
+            
+            // Update progress bar
+            updateProgressBar();
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('ultimateResumeBuilderData', JSON.stringify(resumeData));
+        }
+
+        function loadFromLocalStorage() {
+            const savedData = localStorage.getItem('ultimateResumeBuilderData');
+            if (savedData) {
+                resumeData = JSON.parse(savedData);
+                populateForm();
+                generateResumePreview();
+            }
+        }
+
+        function populateForm() {
+            // Personal info
+            document.getElementById('fullName').value = resumeData.personalInfo.fullName || '';
+            document.getElementById('jobTitle').value = resumeData.personalInfo.jobTitle || '';
+            document.getElementById('email').value = resumeData.personalInfo.email || '';
+            document.getElementById('phone').value = resumeData.personalInfo.phone || '';
+            document.getElementById('address').value = resumeData.personalInfo.address || '';
+            document.getElementById('website').value = resumeData.personalInfo.website || '';
+            document.getElementById('linkedin').value = resumeData.personalInfo.linkedin || '';
+            document.getElementById('github').value = resumeData.personalInfo.github || '';
+            
+            // Summary
+            document.getElementById('summary').innerHTML = resumeData.summary || '';
+            
+            // Clear existing dynamic fields
+            document.getElementById('experienceForm').innerHTML = '';
+            document.getElementById('educationForm').innerHTML = '';
+            document.getElementById('skillsForm').innerHTML = '';
+            document.getElementById('projectsForm').innerHTML = '';
+            document.getElementById('certificationsForm').innerHTML = '';
+            document.getElementById('languagesForm').innerHTML = '';
+            
+            // Experience
+            if (resumeData.experience && resumeData.experience.length > 0) {
+                resumeData.experience.forEach(exp => addExperienceField(exp));
+            } else {
+                addExperienceField();
+            }
+            
+            // Education
+            if (resumeData.education && resumeData.education.length > 0) {
+                resumeData.education.forEach(edu => addEducationField(edu));
+            } else {
+                addEducationField();
+            }
+            
+            // Skills
+            if (resumeData.skills && resumeData.skills.length > 0) {
+                resumeData.skills.forEach(skill => addSkillField(skill));
+            } else {
+                addSkillField();
+            }
+            
+            // Projects
+            if (resumeData.projects && resumeData.projects.length > 0) {
+                resumeData.projects.forEach(project => addProjectField(project));
+            } else {
+                addProjectField();
+            }
+            
+            // Certifications
+            if (resumeData.certifications && resumeData.certifications.length > 0) {
+                resumeData.certifications.forEach(cert => addCertificationField(cert));
+            } else {
+                addCertificationField();
+            }
+            
+            // Languages
+            if (resumeData.languages && resumeData.languages.length > 0) {
+                resumeData.languages.forEach(lang => addLanguageField(lang));
+            } else {
+                addLanguageField();
+            }
+            
+            // Update template selection
+            if (resumeData.template) {
+                document.querySelectorAll('.template-option').forEach(option => {
+                    option.classList.remove('active');
+                    if (option.getAttribute('data-template') === resumeData.template) {
+                        option.classList.add('active');
+                    }
+                });
+            }
+            
+            // Update character counters
+            updateCharacterCounter('summary', 'summaryCharCount', 500);
+        }
+
+        function resetResume() {
+            if (confirm('Are you sure you want to reset your resume? All data will be lost.')) {
+                localStorage.removeItem('ultimateResumeBuilderData');
+                resumeData = {
+                    template: 'professional',
+                    personalInfo: {
+                        fullName: '',
+                        jobTitle: '',
+                        email: '',
+                        phone: '',
+                        address: '',
+                        website: '',
+                        linkedin: '',
+                        github: ''
+                    },
+                    summary: '',
+                    experience: [],
+                    education: [],
+                    skills: [],
+                    projects: [],
+                    certifications: [],
+                    languages: []
+                };
+                populateForm();
+                generateResumePreview();
+                showToast('Resume has been reset');
+            }
+        }
+
+        function saveResume() {
+            updateResumeData();
+            saveToLocalStorage();
+            showToast('Resume saved successfully!');
+            
+            // Update all save status indicators
+            const sections = ['personalInfo', 'summary', 'experience', 'education', 'skills', 'projects', 'certifications', 'languages'];
+            sections.forEach(section => {
+                updateSaveStatus(`${section}SaveStatus`, true);
+            });
+        }
+
+        function loadResume() {
+            loadFromLocalStorage();
+            showToast('Resume loaded from storage');
+        }
+
+        /**
+         * =============================================
+         * RESUME PREVIEW GENERATION
+         * =============================================
+         */
+        function generateResumePreview() {
+            const preview = document.getElementById('resumePreview');
+            
+            // Apply template-specific styles
+            applyTemplateStyles(resumeData.template);
+            
+            // Generate HTML based on resume data
+            preview.innerHTML = `
+                <div class="resume-header">
+                    <h1 class="resume-name">${resumeData.personalInfo.fullName || 'Your Name Here'}</h1>
+                    <div class="resume-title">${resumeData.personalInfo.jobTitle || 'Professional Title'}</div>
+                    <div class="contact-info">
+                        ${resumeData.personalInfo.email ? `<div class="contact-item"><i class="fas fa-envelope"></i> ${resumeData.personalInfo.email}</div>` : ''}
+                        ${resumeData.personalInfo.phone ? `<div class="contact-item"><i class="fas fa-phone"></i> ${resumeData.personalInfo.phone}</div>` : ''}
+                        ${resumeData.personalInfo.address ? `<div class="contact-item"><i class="fas fa-map-marker-alt"></i> ${resumeData.personalInfo.address}</div>` : ''}
+                        ${resumeData.personalInfo.website ? `<div class="contact-item"><i class="fas fa-globe"></i> ${resumeData.personalInfo.website}</div>` : ''}
+                        ${resumeData.personalInfo.linkedin ? `<div class="contact-item"><i class="fab fa-linkedin"></i> ${resumeData.personalInfo.linkedin.replace('https://', '').replace('www.', '')}</div>` : ''}
+                        ${resumeData.personalInfo.github ? `<div class="contact-item"><i class="fab fa-github"></i> ${resumeData.personalInfo.github.replace('https://', '').replace('www.', '')}</div>` : ''}
+                    </div>
+                </div>
+
+                ${resumeData.summary ? `
+                <div class="resume-section">
+                    <h3 class="section-title">Professional Summary</h3>
+                    <div class="summary-content">${resumeData.summary}</div>
+                </div>
+                ` : ''}
+
+                ${resumeData.experience.length > 0 ? `
+                <div class="resume-section">
+                    <h3 class="section-title">Work Experience</h3>
+                    ${resumeData.experience.map(exp => `
+                        <div class="experience-item">
+                            <div class="experience-date">
+                                ${formatDate(exp.startDate)} ${exp.endDate ? ' - ' + formatDate(exp.endDate) : ' - Present'}
+                            </div>
+                            <div class="experience-details">
+                                <h4>${exp.position || 'Position Title'}</h4>
+                                <div class="company">${exp.company || 'Company Name'}</div>
+                                ${exp.description ? `<p>${exp.description.replace(/\n/g, '<br>')}</p>` : ''}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                ` : ''}
+
+                ${resumeData.education.length > 0 ? `
+                <div class="resume-section">
+                    <h3 class="section-title">Education</h3>
+                    ${resumeData.education.map(edu => `
+                        <div class="education-item">
+                            <h4>${edu.degree || 'Degree'}${edu.field ? ` in ${edu.field}` : ''}</h4>
+                            <div class="institution">${edu.institution || 'Institution Name'}</div>
+                            ${edu.gradYear ? `<div class="graduation-year">${formatDate(edu.gradYear, true)}</div>` : ''}
+                            ${edu.description ? `<p>${edu.description.replace(/\n/g, '<br>')}</p>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+                ` : ''}
+
+                ${resumeData.skills.length > 0 ? `
+                <div class="resume-section">
+                    <h3 class="section-title">Skills</h3>
+                    <div class="skills-container">
+                        ${resumeData.skills.map(skill => `
+                            <div class="skill-item">
+                                <div class="skill-name">
+                                    <span>${skill.name || 'Skill Name'}</span>
+                                    <span>${skill.level || '50'}%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: ${skill.level || '50'}%"></div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                ` : ''}
+
+                ${resumeData.projects.length > 0 ? `
+                <div class="resume-section">
+                    <h3 class="section-title">Projects</h3>
+                    ${resumeData.projects.map(project => `
+                        <div class="project-item">
+                            <h4>${project.name || 'Project Name'}</h4>
+                            ${project.url ? `<div class="project-url"><i class="fas fa-link"></i> <a href="${project.url}" target="_blank">${project.url.replace('https://', '').replace('www.', '')}</a></div>` : ''}
+                            ${project.technologies ? `<div class="project-tech"><strong>Technologies:</strong> ${project.technologies}</div>` : ''}
+                            ${project.description ? `<p>${project.description.replace(/\n/g, '<br>')}</p>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+                ` : ''}
+
+                ${resumeData.certifications.length > 0 ? `
+                <div class="resume-section">
+                    <h3 class="section-title">Certifications</h3>
+                    ${resumeData.certifications.map(cert => `
+                        <div class="certification-item">
+                            <h4>${cert.name || 'Certification Name'}</h4>
+                            <div class="cert-org">${cert.organization || 'Issuing Organization'}</div>
+                            ${cert.date ? `<div class="cert-date">${formatDate(cert.date, true)}</div>` : ''}
+                            ${cert.id ? `<div class="cert-id"><strong>Credential ID:</strong> ${cert.id}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+                ` : ''}
+
+                ${resumeData.languages.length > 0 ? `
+                <div class="resume-section">
+                    <h3 class="section-title">Languages</h3>
+                    <div class="languages-container">
+                        ${resumeData.languages.map(lang => `
+                            <div class="language-item">
+                                <strong>${lang.name || 'Language'}:</strong> ${lang.proficiency || 'Proficiency'}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                ` : ''}
+            `;
+            
+            // Add fade-in animation
+            preview.classList.add('fade-in');
+            setTimeout(() => preview.classList.remove('fade-in'), 500);
+        }
+
+        function applyTemplateStyles(template) {
+            const preview = document.getElementById('resumePreview');
+            
+            // Reset all template classes
+            preview.classList.remove('professional-template', 'modern-template', 'creative-template', 'minimal-template');
+            
+            // Add the selected template class
+            preview.classList.add(`${template}-template`);
+            
+            // Apply template-specific styles
+            switch(template) {
+                case 'professional':
+                    preview.style.fontFamily = "'Roboto', sans-serif";
+                    preview.querySelectorAll('.section-title').forEach(title => {
+                        title.style.color = '#3498db';
+                    });
+                    break;
+                    
+                case 'modern':
+                    preview.style.fontFamily = "'Poppins', sans-serif";
+                    preview.querySelectorAll('.section-title').forEach(title => {
+                        title.style.color = '#2ecc71';
+                    });
+                    break;
+                    
+                case 'creative':
+                    preview.style.fontFamily = "'Comic Sans MS', cursive, sans-serif";
+                    preview.querySelectorAll('.section-title').forEach(title => {
+                        title.style.color = '#9b59b6';
+                    });
+                    break;
+                    
+                case 'minimal':
+                    preview.style.fontFamily = "'Helvetica Neue', Arial, sans-serif";
+                    preview.querySelectorAll('.section-title').forEach(title => {
+                        title.style.color = '#2c3e50';
+                        title.style.borderBottom = '1px solid #eee';
+                    });
+                    break;
+            }
+        }
+
+        function formatDate(dateString, yearOnly = false) {
+            if (!dateString) return '';
+            
+            const date = new Date(dateString);
+            if (yearOnly) {
+                return date.getFullYear();
+            }
+            
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                              "July", "August", "September", "October", "November", "December"];
+            
+            const month = monthNames[date.getMonth()];
+            const year = date.getFullYear();
+            
+            return `${month} ${year}`;
+        }
+
+        /**
+         * =============================================
+         * EXPORT FUNCTIONALITY
+         * =============================================
+         */
+        function exportResume(format) {
+            updateResumeData();
+            
+            switch(format) {
+                case 'pdf':
+                    // In a real app, you would use a library like jsPDF or a server-side solution
+                    showToast('PDF export would be implemented with a library like jsPDF', 'error');
+                    break;
+                    
+                case 'docx':
+                    // In a real app, you would use a library like docx or a server-side solution
+                    showToast('Word export would be implemented with a library like docx', 'error');
+                    break;
+                    
+                case 'txt':
+                    exportAsText();
+                    break;
+                    
+                case 'html':
+                    exportAsHTML();
+                    break;
+            }
+        }
+
+        function exportAsText() {
+            let textContent = `${resumeData.personalInfo.fullName || 'Your Name'}\n`;
+            textContent += `${resumeData.personalInfo.jobTitle || 'Professional Title'}\n\n`;
+            
+            // Contact info
+            if (resumeData.personalInfo.email || resumeData.personalInfo.phone || resumeData.personalInfo.address) {
+                textContent += `CONTACT INFORMATION\n`;
+                if (resumeData.personalInfo.email) textContent += `Email: ${resumeData.personalInfo.email}\n`;
+                if (resumeData.personalInfo.phone) textContent += `Phone: ${resumeData.personalInfo.phone}\n`;
+                if (resumeData.personalInfo.address) textContent += `Address: ${resumeData.personalInfo.address}\n`;
+                textContent += `\n`;
+            }
+            
+            // Summary
+            if (resumeData.summary) {
+                textContent += `PROFESSIONAL SUMMARY\n`;
+                textContent += `${stripHtml(resumeData.summary)}\n\n`;
+            }
+            
+            // Experience
+            if (resumeData.experience.length > 0) {
+                textContent += `WORK EXPERIENCE\n`;
+                resumeData.experience.forEach(exp => {
+                    textContent += `${exp.position || 'Position'} at ${exp.company || 'Company'}\n`;
+                    textContent += `${formatDate(exp.startDate)} - ${exp.endDate ? formatDate(exp.endDate) : 'Present'}\n`;
+                    if (exp.description) textContent += `${stripHtml(exp.description)}\n`;
+                    textContent += `\n`;
+                });
+            }
+            
+            // Education
+            if (resumeData.education.length > 0) {
+                textContent += `EDUCATION\n`;
+                resumeData.education.forEach(edu => {
+                    textContent += `${edu.degree || 'Degree'}${edu.field ? ` in ${edu.field}` : ''}\n`;
+                    textContent += `${edu.institution || 'Institution'}\n`;
+                    if (edu.gradYear) textContent += `Graduated: ${formatDate(edu.gradYear, true)}\n`;
+                    if (edu.description) textContent += `${stripHtml(edu.description)}\n`;
+                    textContent += `\n`;
+                });
+            }
+            
+            // Skills
+            if (resumeData.skills.length > 0) {
+                textContent += `SKILLS\n`;
+                resumeData.skills.forEach(skill => {
+                    textContent += `${skill.name || 'Skill'}: ${skill.level || '50'}%\n`;
+                });
+                textContent += `\n`;
+            }
+            
+            // Create download link
+            const blob = new Blob([textContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${resumeData.personalInfo.fullName || 'resume'}_resume.txt`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast('Resume exported as text file');
+        }
+
+        function exportAsHTML() {
+            const htmlContent = document.getElementById('resumePreview').outerHTML;
+            
+            // Create download link
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${resumeData.personalInfo.fullName || 'resume'}_resume.html`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showToast('Resume exported as HTML file');
+        }
+
+        function stripHtml(html) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || '';
+        }
+
+        /**
+         * =============================================
+         * UI UTILITIES
+         * =============================================
+         */
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            
+            // Set type (success or error)
+            if (type === 'error') {
+                toast.classList.add('error');
+                toast.querySelector('i').className = 'fas fa-exclamation-circle';
+            } else {
+                toast.classList.remove('error');
+                toast.querySelector('i').className = 'fas fa-check-circle';
+            }
+            
+            // Show toast
+            toast.classList.add('show');
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        function updateProgressBar() {
+            let filledFields = 0;
+            let totalFields = 0;
+            
+            // Count personal info fields
+            for (const key in resumeData.personalInfo) {
+                totalFields++;
+                if (resumeData.personalInfo[key]) filledFields++;
+            }
+            
+            // Count summary
+            totalFields++;
+            if (resumeData.summary) filledFields++;
+            
+            // Count experience
+            if (resumeData.experience.length > 0) {
+                totalFields += resumeData.experience.length;
+                filledFields += resumeData.experience.length;
+            }
+            
+            // Count education
+            if (resumeData.education.length > 0) {
+                totalFields += resumeData.education.length;
+                filledFields += resumeData.education.length;
+            }
+            
+            // Count skills
+            if (resumeData.skills.length > 0) {
+                totalFields += resumeData.skills.length;
+                filledFields += resumeData.skills.length;
+            }
+            
+            // Calculate percentage (minimum 5% to show some progress)
+            const percentage = totalFields > 0 ? Math.max(5, Math.round((filledFields / totalFields) * 100)) : 5;
+            
+            // Update progress bar
+            document.getElementById('progressBar').style.width = `${percentage}%`;
+            
+            // Change color based on completion
+            if (percentage >= 80) {
+                document.getElementById('progressBar').style.background = '#2ecc71';
+            } else if (percentage >= 50) {
+                document.getElementById('progressBar').style.background = '#f39c12';
+            } else {
+                document.getElementById('progressBar').style.background = '#e74c3c';
+            }
+        }
+    </script>
+</body>
+</html>
